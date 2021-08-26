@@ -18,14 +18,25 @@ var server = http.createServer(function(request, response){
     var string = fs.readFileSync('./index.html')  
     response.setHeader('Content-Type', 'text/html;charset=utf-8')  
     response.end(string)   
-  }else if(path === '/style.css'){   
-    var string = fs.readFileSync('./style.css')
-    response.setHeader('Content-Type', 'text/css')
-    response.end(string)
   }else if(path === '/main.js'){  
     var string = fs.readFileSync('./main.js')
     response.setHeader('Content-Type', 'application/javascript')
     response.end(string)
+  }else if(path === '/xxx'){
+    response.statusCode = 200
+    response.setHeader('Content-Type', 'text/json;charset=utf-8')
+    response.setHeader('Access-Control-Allow-Origin', 'http://frank.com:8001')
+    response.write(`
+    {
+      "note":{
+        "to": "小谷",
+        "from": "方方",
+        "heading": "打招呼",
+        "content": "hi"
+      }
+    }
+    `)
+    response.end()
   }else{  
     response.statusCode = 404
     response.setHeader('Content-Type', 'text/html;charset=utf-8') 
