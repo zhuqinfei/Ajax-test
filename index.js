@@ -18,14 +18,15 @@ var server = http.createServer(function(request, response){
     var string = fs.readFileSync('./index.html')  
     response.setHeader('Content-Type', 'text/html;charset=utf-8')  
     response.end(string)   
-  }else if(path === '/main.js'){  
+  }else if(path === '/main.js'){                
     var string = fs.readFileSync('./main.js')
     response.setHeader('Content-Type', 'application/javascript')
     response.end(string)
   }else if(path === '/xxx'){
-    response.statusCode = 200
-    response.setHeader('Content-Type', 'text/json;charset=utf-8')
-    response.setHeader('Access-Control-Allow-Origin', 'http://frank.com:8001')
+    response.statuesCode=200
+    response.setHeader('Content-Type','text/json;charset=utf-8')
+    //同源策略中实现如何跨越访问
+    response.setHeader('Access-Control-Allow-Origin', 'http://fei.com:8001')  
     response.write(`
     {
       "note":{
