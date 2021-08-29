@@ -27,13 +27,17 @@ window.jQuery.ajax=function(options){
 }
 window.$=window.jQuery
 
+ function f1(responseText){} //当我们有多个函数进行传参
+ function f2(responseText){}
+
 myButton.addEventListener('click',(e)=>{
   window.jQuery.ajax({
     url:'/xxx',
     method:'post',
-    //这里用到回调知识callback,这里x实际是指request.responseText
-    successFn:(x)=>{console.log(x)},
-    //这里用到回调知识callback,这里x实际是指request
+    successFn:(x)=>{
+      f1.call(undefined,x) //当我们有多个函数进行传参，就这样应用
+      f2.call(undefined,x)
+    },
     failFn:(x)=>{console.log(x)},
   })
 })
