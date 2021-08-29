@@ -14,8 +14,8 @@ window.jQuery.ajax=function(options){
   let headers=options.headers
 
   let request=new XMLHttpRequest()
-  request.open(method,url)  //新增请求网址
-  for(var key in headers){
+  request.open(method,url)  
+  for(var key in headers){   // //设置多个请求头用for循环
       value=headers[key]
       request.setRequestHeader(key ,value)
   }
@@ -32,19 +32,19 @@ window.jQuery.ajax=function(options){
 }
 window.$=window.jQuery
 
- function f1(responseText){} //当我们有多个函数进行传参
+ function f1(responseText){} 
  function f2(responseText){}
 
 myButton.addEventListener('click',(e)=>{
   window.jQuery.ajax({
     url:'/xxx',
     method:'post',
-    headers:{
+    headers:{   //设置多个请求头
       'Content-Type':'application/x-www-form-urlencoded',
       'fei':'18'
     },
     successFn:(x)=>{
-      f1.call(undefined,x) //当我们有多个函数进行传参，就这样应用
+      f1.call(undefined,x) 
       f2.call(undefined,x)
     },
     failFn:(x)=>{console.log(x)},
