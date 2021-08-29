@@ -28,11 +28,12 @@ window.jQuery.ajax=function(options){
 window.$=window.jQuery
 
 myButton.addEventListener('click',(e)=>{
-  let obj={
+  window.jQuery.ajax({
     url:'/xxx',
     method:'post',
-    successFn:()=>{},
-    failFn:()=>{},
-  }
-  window.jQuery.ajax(obj)
+    //这里用到回调知识callback,这里x实际是指request.responseText
+    successFn:(x)=>{console.log(x)},
+    //这里用到回调知识callback,这里x实际是指request
+    failFn:(x)=>{console.log(x)},
+  })
 })
