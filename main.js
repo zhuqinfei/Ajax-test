@@ -5,14 +5,7 @@ window.jQuery=function(nodeOrSelector){
    return nodes
 }
 
-window.jQuery.ajax=function(options){
-  // let url=options.url
-  // let method=options.method
-  // let body=options.body
-  // let successFn=options.successFn
-  // let failFn=options.failFn
-  // let headers=options.headers
-  let {url,method,body,successFn,failFn,headers}=options  // ES6 析构赋值
+window.jQuery.ajax=function({url,method,body,successFn,failFn,headers}){
 
   let request=new XMLHttpRequest()
   request.open(method,url)  
